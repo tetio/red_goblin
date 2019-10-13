@@ -1,0 +1,39 @@
+delete from portic.coprar_equipamientos where id_interno in 
+(select id_interno from portic.coprar_mensajes where sender_unb in ('ESQ33333333','ESQ11111111') and message_date>'20/03/2017');
+
+delete from portic.coprar_mensajes where sender_unb in ('ESQ33333333','ESQ11111111') and message_date>'20/03/2017';
+
+delete from portic.coarri_equipamientos where id_interno in 
+(select id_interno from portic.coarri_mensajes where sender_id in ('ESQ33333333','ESQ11111111') and fecha_envio>'20/03/2017');
+
+delete from portic.coarri_mensajes where sender_id in ('ESQ33333333','ESQ11111111') and fecha_envio>'20/03/2017';
+
+update app_trk_files set checksum = null
+where referencia_interna in (
+select ma.num_ref_fichero from ecx.app_trk_messages ma where
+ma.remitente in('ESQ33333333','ESQ11111111')
+and ma.tipo_mensaje in ('COPRAR', 'COARRI')
+and ma.fecha_inicio_proceso>to_date('20/03/2017 15:00:00', 'DD/MM/YYYY HH24:MI:SS'));
+
+delete from ecx.app_trk_contents co 
+where co.num_ref_fichero in 
+(select ma.num_ref_fichero from ecx.app_trk_messages ma where
+ma.remitente in('ESQ33333333','ESQ11111111') 
+and ma.tipo_mensaje in ('COPRAR', 'COARRI')
+and ma.fecha_inicio_proceso>to_date('20/03/2017 15:00:00', 'DD/MM/YYYY HH24:MI:SS'));
+
+delete from portic.app_trk_mensajes_unicos_hist ma where
+ma.remitente in('ESQ33333333','ESQ11111111') 
+and ma.tipo_mensaje in ('COPRAR', 'COARRI')
+and ma.fecha_insert>to_date('20/03/2017 15:00:00', 'DD/MM/YYYY HH24:MI:SS');
+
+delete from portic.app_trk_mensajes_unicos ma where
+ma.remitente in('ESQ33333333','ESQ11111111') 
+and ma.tipo_mensaje in ('COPRAR', 'COARRI')
+and ma.fecha_insert>to_date('20/03/2017 15:00:00', 'DD/MM/YYYY HH24:MI:SS');
+
+delete from ecx.app_trk_messages ma where
+ma.remitente in('ESQ33333333','ESQ11111111') 
+and ma.tipo_mensaje in ('COPRAR', 'COARRI')
+and ma.fecha_inicio_proceso>to_date('20/03/2017 15:00:00', 'DD/MM/YYYY HH24:MI:SS');
+commit;

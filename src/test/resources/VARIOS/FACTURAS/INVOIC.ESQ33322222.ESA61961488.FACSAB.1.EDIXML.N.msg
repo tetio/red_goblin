@@ -1,0 +1,539 @@
+<?xml version="1.0" encoding="ISO-8859-1"?>
+<INVOIC>
+	<doc_header>
+		<document>INVOIC</document>
+		<messagename>380</messagename>
+		<function>47</function>
+		<sender>ESQ33322222</sender>
+		<receiver>ESA61961488</receiver>
+		<timestamp>1205101405</timestamp>
+		<application>Factura Telematica</application>
+		<format>XML</format>
+		<doctype/>
+	</doc_header>
+	<factura>
+		<cabecera>
+			<numeroMensaje>APB20123250295</numeroMensaje>
+			<numeroDocumento>B2012000019951FRA</numeroDocumento>
+			<fechaFactura>20120510</fechaFactura>
+			<fechaEnvio>20120510</fechaEnvio>
+			<instruccionesPago>
+				<condicionesPago>1</condicionesPago>
+			</instruccionesPago>
+			<descripcionSubpuerto>Barcelona</descripcionSubpuerto>
+			<descripcionTarifa>Taxa de les Mercaderies</descripcionTarifa>
+			<facturaExentaIVA>EXENTA DE IVA</facturaExentaIVA>
+			<numeroDeCarpeta>B20126042 /2012</numeroDeCarpeta>
+			<referenciaAdicional>2012 31370</referenciaAdicional>
+			<emisorFactura>
+				<nombreYDireccion>
+					<nif>Q33322222</nif>
+					<nombre>PORT DE BARCELONA</nombre>
+					<calle>PORTAL DE LA PAU</calle>
+					<tipoVia>LLOC</tipoVia>
+					<ciudad>BARCELONA</ciudad>
+					<subentidadPais>08</subentidadPais>
+					<codigoPostal>08039</codigoPostal>
+					<paisCodificado>ES</paisCodificado>
+				</nombreYDireccion>
+				<contacto>
+					<idContacto>PORT DE BARCELONA</idContacto>
+				</contacto>
+			</emisorFactura>
+			<receptorFactura>
+				<nombreYDireccion>
+					<nif>A61961488</nif>
+					<nombre>TERMINAL CONTENIDORS DE BARCELONA S</nombre>
+					<calle>CTRA.CIRCUNV.TRAM IV EDIF.TCB Muell</calle>
+					<numero>S/N</numero>
+					<ciudad>BARCELONA</ciudad>
+					<subentidadPais>08</subentidadPais>
+					<codigoPostal>08039</codigoPostal>
+					<paisCodificado>ES</paisCodificado>
+				</nombreYDireccion>
+				<institucionFinanciera>
+					<numeroCuenta>0102001451</numeroCuenta>
+					<codigoEntidadBancaria>0182</codigoEntidadBancaria>
+					<sucursal>6035/41</sucursal>
+					<nombreBanco>BBVA</nombreBanco>
+					<codigoPais>ES</codigoPais>
+				</institucionFinanciera>
+				<contacto>
+					<idContacto>TERMINAL CONTENIDORS DE BARCELONA S</idContacto>
+					<comunicacion>
+						<numero>934410066</numero>
+						<canal>TE</canal>
+					</comunicacion>
+				</contacto>
+			</receptorFactura>
+			<lugarOrigenFactura>
+				<nombreYDireccion>
+					<nombre>PORT DE BARCELONA</nombre>
+				</nombreYDireccion>
+				<contacto>
+					<idContacto>PORT DE BARCELONA</idContacto>
+				</contacto>
+			</lugarOrigenFactura>
+			<divisaFactura>EUE</divisaFactura>
+			<terminosDePago>
+				<descTerminosPago>1</descTerminosPago>
+				<fechaVencimientoFactura>20120620</fechaVencimientoFactura>
+				<tipoIVA>0000000000</tipoIVA>
+			</terminosDePago>
+			<detallesTransporte>
+				<nombreDelBuque>VERONICA B</nombreDelBuque>
+				<numeroDeEscala>00000000000000000000000000000031370</numeroDeEscala>
+			</detallesTransporte>
+			<requerimientoCondicion>
+				<idRequerimientoCondicion>DATCAB1</idRequerimientoCondicion>
+				<fechaCondicion>201205100000</fechaCondicion>
+				<informacionAdicional>9348625 VERONICA B</informacionAdicional>
+				<informacionGeneral>Buque IMO</informacionGeneral>
+			</requerimientoCondicion>
+			<requerimientoCondicion>
+				<idRequerimientoCondicion>DATCAB2</idRequerimientoCondicion>
+				<fechaCondicion>201205100000</fechaCondicion>
+				<informacionGeneral>Periodo impositivo:</informacionGeneral>
+			</requerimientoCondicion>
+			<requerimientoCondicion>
+				<idRequerimientoCondicion>DATCAB3</idRequerimientoCondicion>
+				<fechaCondicion>201205100000</fechaCondicion>
+				<informacionGeneral>Escala:</informacionGeneral>
+			</requerimientoCondicion>
+			<requerimientoCondicion>
+				<idRequerimientoCondicion>DATCAB4</idRequerimientoCondicion>
+				<fechaCondicion>201205100000</fechaCondicion>
+				<informacionAdicional>000075 BOLUDA LINES SA A11000403</informacionAdicional>
+				<informacionGeneral>Consignatario</informacionGeneral>
+			</requerimientoCondicion>
+			<requerimientoCondicion>
+				<idRequerimientoCondicion>DATCAB5</idRequerimientoCondicion>
+				<fechaCondicion>201205100000</fechaCondicion>
+				<informacionAdicional>03/05/2012 12:09</informacionAdicional>
+				<informacionGeneral>Fecha/Hora entrada buque:</informacionGeneral>
+			</requerimientoCondicion>
+			<requerimientoCondicion>
+				<idRequerimientoCondicion>DATCAB6</idRequerimientoCondicion>
+				<fechaCondicion>201205100000</fechaCondicion>
+				<informacionGeneral>Tipo manifiesto</informacionGeneral>
+			</requerimientoCondicion>
+			<requerimientoCondicion>
+				<idRequerimientoCondicion>DATCAB7</idRequerimientoCondicion>
+				<fechaCondicion>201205100000</fechaCondicion>
+				<informacionAdicional>151</informacionAdicional>
+				<informacionGeneral>Línea serv./regular</informacionGeneral>
+			</requerimientoCondicion>
+			<requerimientoCondicion>
+				<idRequerimientoCondicion>DATCAB8</idRequerimientoCondicion>
+				<fechaCondicion>201205100000</fechaCondicion>
+				<informacionAdicional>04/05/2012 19:18</informacionAdicional>
+				<informacionGeneral>Fecha hora salida de buque</informacionGeneral>
+			</requerimientoCondicion>
+			<requerimientoCondicion>
+				<idRequerimientoCondicion>DATCAB9</idRequerimientoCondicion>
+				<fechaCondicion>201205100000</fechaCondicion>
+				<informacionAdicional>G General</informacionAdicional>
+				<informacionGeneral>Régimen</informacionGeneral>
+			</requerimientoCondicion>
+			<requerimientoCondicion>
+				<idRequerimientoCondicion>DATCAB10</idRequerimientoCondicion>
+				<fechaCondicion>201205100000</fechaCondicion>
+				<informacionAdicional>97 BOLUDA LINES</informacionAdicional>
+				<informacionGeneral>Armador</informacionGeneral>
+			</requerimientoCondicion>
+			<requerimientoCondicion>
+				<idRequerimientoCondicion>DATCAB11</idRequerimientoCondicion>
+				<fechaCondicion>201205100000</fechaCondicion>
+				<informacionAdicional>PORTACONTENEDOR</informacionAdicional>
+				<informacionGeneral>Tipo de buque</informacionGeneral>
+			</requerimientoCondicion>
+			<requerimientoCondicion>
+				<idRequerimientoCondicion>DATCAB12</idRequerimientoCondicion>
+				<fechaCondicion>201205100000</fechaCondicion>
+				<informacionAdicional>S</informacionAdicional>
+				<informacionGeneral>Servicio regular</informacionGeneral>
+			</requerimientoCondicion>
+			<requerimientoCondicion>
+				<idRequerimientoCondicion>LITREF1</idRequerimientoCondicion>
+				<fechaCondicion>201205100000</fechaCondicion>
+				<informacionGeneral>Elemento de transporte/operación/presentación</informacionGeneral>
+			</requerimientoCondicion>
+			<requerimientoCondicion>
+				<idRequerimientoCondicion>UNIDAD1</idRequerimientoCondicion>
+				<fechaCondicion>201205100000</fechaCondicion>
+				<informacionGeneral>Nº. Unidades</informacionGeneral>
+			</requerimientoCondicion>
+			<requerimientoCondicion>
+				<idRequerimientoCondicion>PRECIO</idRequerimientoCondicion>
+				<fechaCondicion>201205100000</fechaCondicion>
+				<informacionGeneral>Cuota tasas</informacionGeneral>
+			</requerimientoCondicion>
+			<requerimientoCondicion>
+				<idRequerimientoCondicion>IMPORTE</idRequerimientoCondicion>
+				<fechaCondicion>201205100000</fechaCondicion>
+				<informacionGeneral>Importe</informacionGeneral>
+			</requerimientoCondicion>
+			<requerimientoCondicion>
+				<idRequerimientoCondicion>PORCENT</idRequerimientoCondicion>
+				<fechaCondicion>201205100000</fechaCondicion>
+				<informacionGeneral>Porcentaje</informacionGeneral>
+			</requerimientoCondicion>
+		</cabecera>
+		<detalles>
+			<detalle>
+				<numeroLinea>000001</numeroLinea>
+				<descripcionArticulo>
+					<tipoDescripcion>B</tipoDescripcion>
+					<codigoCaracteristicaArticulo>QE</codigoCaracteristicaArticulo>
+					<descripcionArticulo1>Embarq CN 20" Ll -Term.Conc</descripcionArticulo1>
+				</descripcionArticulo>
+				<cantidad>
+					<calificadorCantidad>ZU1</calificadorCantidad>
+					<valorCantidad>000000000005</valorCantidad>
+				</cantidad>
+				<precioUnitario>
+					<importe>0000000000002,2320</importe>
+					<divisa>EUE</divisa>
+				</precioUnitario>
+				<precioLinea>
+					<importe>000000000000011,16</importe>
+					<divisa>EUE</divisa>
+				</precioLinea>
+				<importeLinea>
+					<importe>000000000000011,16</importe>
+					<divisa>EUE</divisa>
+				</importeLinea>
+			</detalle>
+			<detalle>
+				<numeroLinea>000002</numeroLinea>
+				<descripcionArticulo>
+					<tipoDescripcion>B</tipoDescripcion>
+					<codigoCaracteristicaArticulo>QE</codigoCaracteristicaArticulo>
+					<descripcionArticulo1>Embarq CN 20" Ll -Term.Conc</descripcionArticulo1>
+				</descripcionArticulo>
+				<cantidad>
+					<calificadorCantidad>ZU1</calificadorCantidad>
+					<valorCantidad>000000000018</valorCantidad>
+				</cantidad>
+				<infoAdicional>
+					<texto1>S.R. de curta distància (Art.216.b)</texto1>
+				</infoAdicional>
+				<precioUnitario>
+					<importe>0000000000001,7856</importe>
+					<divisa>EUE</divisa>
+				</precioUnitario>
+				<precioLinea>
+					<importe>000000000000032,14</importe>
+					<divisa>EUE</divisa>
+				</precioLinea>
+				<importeLinea>
+					<importe>000000000000032,14</importe>
+					<divisa>EUE</divisa>
+				</importeLinea>
+			</detalle>
+			<detalle>
+				<numeroLinea>000003</numeroLinea>
+				<descripcionArticulo>
+					<tipoDescripcion>B</tipoDescripcion>
+					<codigoCaracteristicaArticulo>QE</codigoCaracteristicaArticulo>
+					<descripcionArticulo1>Embarq CN 40" Ll -Term.Conc</descripcionArticulo1>
+				</descripcionArticulo>
+				<cantidad>
+					<calificadorCantidad>ZU1</calificadorCantidad>
+					<valorCantidad>000000000005</valorCantidad>
+				</cantidad>
+				<precioUnitario>
+					<importe>0000000000004,4640</importe>
+					<divisa>EUE</divisa>
+				</precioUnitario>
+				<precioLinea>
+					<importe>000000000000022,32</importe>
+					<divisa>EUE</divisa>
+				</precioLinea>
+				<importeLinea>
+					<importe>000000000000022,32</importe>
+					<divisa>EUE</divisa>
+				</importeLinea>
+			</detalle>
+			<detalle>
+				<numeroLinea>000004</numeroLinea>
+				<descripcionArticulo>
+					<tipoDescripcion>B</tipoDescripcion>
+					<codigoCaracteristicaArticulo>QE</codigoCaracteristicaArticulo>
+					<descripcionArticulo1>Embarq CN 40" Ll -Term.Conc</descripcionArticulo1>
+				</descripcionArticulo>
+				<cantidad>
+					<calificadorCantidad>ZU1</calificadorCantidad>
+					<valorCantidad>000000000053</valorCantidad>
+				</cantidad>
+				<infoAdicional>
+					<texto1>S.R. de curta distància (Art.216.b)</texto1>
+				</infoAdicional>
+				<precioUnitario>
+					<importe>0000000000003,5711</importe>
+					<divisa>EUE</divisa>
+				</precioUnitario>
+				<precioLinea>
+					<importe>000000000000189,27</importe>
+					<divisa>EUE</divisa>
+				</precioLinea>
+				<importeLinea>
+					<importe>000000000000189,27</importe>
+					<divisa>EUE</divisa>
+				</importeLinea>
+			</detalle>
+			<detalle>
+				<numeroLinea>000005</numeroLinea>
+				<descripcionArticulo>
+					<tipoDescripcion>B</tipoDescripcion>
+					<codigoCaracteristicaArticulo>2E</codigoCaracteristicaArticulo>
+					<descripcionArticulo1>Embarq Mer.G2 -Term.Conc</descripcionArticulo1>
+				</descripcionArticulo>
+				<cantidad>
+					<calificadorCantidad>ZU1</calificadorCantidad>
+					<valorCantidad>000000000045.70</valorCantidad>
+				</cantidad>
+				<precioUnitario>
+					<importe>0000000000000,6696</importe>
+					<divisa>EUE</divisa>
+				</precioUnitario>
+				<precioLinea>
+					<importe>0000000000000030,6</importe>
+					<divisa>EUE</divisa>
+				</precioLinea>
+				<importeLinea>
+					<importe>0000000000000030,6</importe>
+					<divisa>EUE</divisa>
+				</importeLinea>
+			</detalle>
+			<detalle>
+				<numeroLinea>000006</numeroLinea>
+				<descripcionArticulo>
+					<tipoDescripcion>B</tipoDescripcion>
+					<codigoCaracteristicaArticulo>2E</codigoCaracteristicaArticulo>
+					<descripcionArticulo1>Embarq Mer.G2 -Term.Conc</descripcionArticulo1>
+				</descripcionArticulo>
+				<cantidad>
+					<calificadorCantidad>ZU1</calificadorCantidad>
+					<valorCantidad>000000000280.87</valorCantidad>
+				</cantidad>
+				<infoAdicional>
+					<texto1>S.R. de curta distància (Art.216.b)</texto1>
+				</infoAdicional>
+				<precioUnitario>
+					<importe>0000000000000,5357</importe>
+					<divisa>EUE</divisa>
+				</precioUnitario>
+				<precioLinea>
+					<importe>000000000000150,46</importe>
+					<divisa>EUE</divisa>
+				</precioLinea>
+				<importeLinea>
+					<importe>000000000000150,46</importe>
+					<divisa>EUE</divisa>
+				</importeLinea>
+			</detalle>
+			<detalle>
+				<numeroLinea>000007</numeroLinea>
+				<descripcionArticulo>
+					<tipoDescripcion>B</tipoDescripcion>
+					<codigoCaracteristicaArticulo>3E</codigoCaracteristicaArticulo>
+					<descripcionArticulo1>Embarq Mer.G3 -Term.Conc</descripcionArticulo1>
+				</descripcionArticulo>
+				<cantidad>
+					<calificadorCantidad>ZU1</calificadorCantidad>
+					<valorCantidad>000000000021</valorCantidad>
+				</cantidad>
+				<precioUnitario>
+					<importe>0000000000001,0664</importe>
+					<divisa>EUE</divisa>
+				</precioUnitario>
+				<precioLinea>
+					<importe>000000000000022,39</importe>
+					<divisa>EUE</divisa>
+				</precioLinea>
+				<importeLinea>
+					<importe>000000000000022,39</importe>
+					<divisa>EUE</divisa>
+				</importeLinea>
+			</detalle>
+			<detalle>
+				<numeroLinea>000008</numeroLinea>
+				<descripcionArticulo>
+					<tipoDescripcion>B</tipoDescripcion>
+					<codigoCaracteristicaArticulo>3E</codigoCaracteristicaArticulo>
+					<descripcionArticulo1>Embarq Mer.G3 -Term.Conc</descripcionArticulo1>
+				</descripcionArticulo>
+				<cantidad>
+					<calificadorCantidad>ZU1</calificadorCantidad>
+					<valorCantidad>000000000065.03</valorCantidad>
+				</cantidad>
+				<infoAdicional>
+					<texto1>S.R. de curta distància (Art.216.b)</texto1>
+				</infoAdicional>
+				<precioUnitario>
+					<importe>0000000000000,8531</importe>
+					<divisa>EUE</divisa>
+				</precioUnitario>
+				<precioLinea>
+					<importe>000000000000055,48</importe>
+					<divisa>EUE</divisa>
+				</precioLinea>
+				<importeLinea>
+					<importe>000000000000055,48</importe>
+					<divisa>EUE</divisa>
+				</importeLinea>
+			</detalle>
+			<detalle>
+				<numeroLinea>000009</numeroLinea>
+				<descripcionArticulo>
+					<tipoDescripcion>B</tipoDescripcion>
+					<codigoCaracteristicaArticulo>4E</codigoCaracteristicaArticulo>
+					<descripcionArticulo1>Embarq Mer.G4 -Term.Conc</descripcionArticulo1>
+				</descripcionArticulo>
+				<cantidad>
+					<calificadorCantidad>ZU1</calificadorCantidad>
+					<valorCantidad>000000000022.88</valorCantidad>
+				</cantidad>
+				<precioUnitario>
+					<importe>0000000000001,7856</importe>
+					<divisa>EUE</divisa>
+				</precioUnitario>
+				<precioLinea>
+					<importe>000000000000040,85</importe>
+					<divisa>EUE</divisa>
+				</precioLinea>
+				<importeLinea>
+					<importe>000000000000040,85</importe>
+					<divisa>EUE</divisa>
+				</importeLinea>
+			</detalle>
+			<detalle>
+				<numeroLinea>000010</numeroLinea>
+				<descripcionArticulo>
+					<tipoDescripcion>B</tipoDescripcion>
+					<codigoCaracteristicaArticulo>4E</codigoCaracteristicaArticulo>
+					<descripcionArticulo1>Embarq Mer.G4 -Term.Conc</descripcionArticulo1>
+				</descripcionArticulo>
+				<cantidad>
+					<calificadorCantidad>ZU1</calificadorCantidad>
+					<valorCantidad>000000000060.31</valorCantidad>
+				</cantidad>
+				<infoAdicional>
+					<texto1>S.R. de curta distància (Art.216.b)</texto1>
+				</infoAdicional>
+				<precioUnitario>
+					<importe>0000000000001,4284</importe>
+					<divisa>EUE</divisa>
+				</precioUnitario>
+				<precioLinea>
+					<importe>000000000000086,15</importe>
+					<divisa>EUE</divisa>
+				</precioLinea>
+				<importeLinea>
+					<importe>000000000000086,15</importe>
+					<divisa>EUE</divisa>
+				</importeLinea>
+			</detalle>
+			<detalle>
+				<numeroLinea>000011</numeroLinea>
+				<descripcionArticulo>
+					<tipoDescripcion>B</tipoDescripcion>
+					<codigoCaracteristicaArticulo>5E</codigoCaracteristicaArticulo>
+					<descripcionArticulo1>Embarq Pertre.G5</descripcionArticulo1>
+				</descripcionArticulo>
+				<cantidad>
+					<calificadorCantidad>ZU1</calificadorCantidad>
+					<valorCantidad>000000000001.34</valorCantidad>
+				</cantidad>
+				<infoAdicional>
+					<texto1>S.R. de curta distància (Art.216.b)</texto1>
+				</infoAdicional>
+				<precioUnitario>
+					<importe>0000000000002,4776</importe>
+					<divisa>EUE</divisa>
+				</precioUnitario>
+				<precioLinea>
+					<importe>000000000000003,32</importe>
+					<divisa>EUE</divisa>
+				</precioLinea>
+				<importeLinea>
+					<importe>000000000000003,32</importe>
+					<divisa>EUE</divisa>
+				</importeLinea>
+			</detalle>
+			<detalle>
+				<numeroLinea>000012</numeroLinea>
+				<descripcionArticulo>
+					<tipoDescripcion>B</tipoDescripcion>
+					<codigoCaracteristicaArticulo>5E</codigoCaracteristicaArticulo>
+					<descripcionArticulo1>Embarq Mer.G5 -Term.Conc</descripcionArticulo1>
+				</descripcionArticulo>
+				<cantidad>
+					<calificadorCantidad>ZU1</calificadorCantidad>
+					<valorCantidad>000000000047.16</valorCantidad>
+				</cantidad>
+				<precioUnitario>
+					<importe>0000000000002,4800</importe>
+					<divisa>EUE</divisa>
+				</precioUnitario>
+				<precioLinea>
+					<importe>000000000000116,96</importe>
+					<divisa>EUE</divisa>
+				</precioLinea>
+				<importeLinea>
+					<importe>000000000000116,96</importe>
+					<divisa>EUE</divisa>
+				</importeLinea>
+			</detalle>
+			<detalle>
+				<numeroLinea>000013</numeroLinea>
+				<descripcionArticulo>
+					<tipoDescripcion>B</tipoDescripcion>
+					<codigoCaracteristicaArticulo>5E</codigoCaracteristicaArticulo>
+					<descripcionArticulo1>Embarq Mer.G5 -Term.Conc</descripcionArticulo1>
+				</descripcionArticulo>
+				<cantidad>
+					<calificadorCantidad>ZU1</calificadorCantidad>
+					<valorCantidad>000000000663.97</valorCantidad>
+				</cantidad>
+				<infoAdicional>
+					<texto1>S.R. de curta distància (Art.216.b)</texto1>
+				</infoAdicional>
+				<precioUnitario>
+					<importe>0000000000001,9840</importe>
+					<divisa>EUE</divisa>
+				</precioUnitario>
+				<precioLinea>
+					<importe>000000000001317,32</importe>
+					<divisa>EUE</divisa>
+				</precioLinea>
+				<importeLinea>
+					<importe>000000000001317,32</importe>
+					<divisa>EUE</divisa>
+				</importeLinea>
+			</detalle>
+		</detalles>
+		<resumen>
+			<importeBruto>
+				<importe>000000000002078,42</importe>
+				<divisa>EUE</divisa>
+			</importeBruto>
+			<importeNeto>
+				<importe>000000000002078,42</importe>
+				<divisa>EUE</divisa>
+			</importeNeto>
+			<impuesto>
+				<tipoTasa>VAT</tipoTasa>
+				<importeTasa>
+					<importe>000000000000000000</importe>
+					<divisa>EUE</divisa>
+				</importeTasa>
+				<baseImponible>
+					<importe>000000000002078,42</importe>
+					<divisa>EUE</divisa>
+				</baseImponible>
+			</impuesto>
+		</resumen>
+	</factura>
+</INVOIC>

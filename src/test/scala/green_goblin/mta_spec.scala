@@ -1,3 +1,5 @@
+package green_goblin
+
 import org.scalatest.{BeforeAndAfterAll, FunSpec}
 
 

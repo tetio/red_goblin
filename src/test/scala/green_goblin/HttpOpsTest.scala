@@ -1,4 +1,6 @@
-import org.scalatest.{FlatSpec}
+package green_goblin
+
+import org.scalatest.FlatSpec
 
 class HttpOpsTest extends FlatSpec {
 

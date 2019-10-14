@@ -1,6 +1,8 @@
+package green_goblin
+
 import com.softwaremill.sttp._
-import io.circe.{Decoder, parser}
 import io.circe.generic.semiauto.deriveDecoder
+import io.circe.{Decoder, parser}
 
 case class DummyResult(data: String)
 case class AuthResult(token: String)
@@ -56,14 +58,14 @@ object HttpOps {
   }
 
 
-  def sendMessage(securityToken: String, companyCode: String, documentType: String, sender: String, receiver: String,
-                  msgNumber: String, numVersion: String, messageFormat: String, message: String, digest: String,
-                  signed: String): String = {
-
-    val request = sttp.body(Map("securityToken" -> securityToken, "companyCode" -> companyCode, "documentType" -> documentType,
-      "sender" -> sender, "receiver" -> receiver, "msgNumber" -> msgNumber,
-      "numVersion" -> numVersion, "messageFormat" -> messageFormat, "message" -> message,
-      "signed" -> signed)).post(uri"$url/sendmessage")
+//  def sendMessage(securityToken: String, companyCode: String, documentType: String, sender: String, receiver: String,
+//                  msgNumber: String, numVersion: String, messageFormat: String, message: String, digest: String,
+//                  signed: String): String = {
+  def sendMessage(securityToken: String, companyCode: String, m: Message): String = {
+    val request = sttp.body(Map("securityToken" -> securityToken, "companyCode" -> companyCode, "documentType" -> m.documentType,
+      "sender" -> m.sender, "receiver" -> m.receiver, "msgNumber" -> m.docNumber,
+      "numVersion" -> m.docVersion, "messageFormat" -> m.messageFormat, "message" -> m.message,
+      "signed" -> m.signed)).post(uri"$url/sendmessage")
     val response = request.send()
     implicit val resultDecoder: Decoder[SendMessageResult] = deriveDecoder[SendMessageResult]
     response.code match {

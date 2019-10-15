@@ -2,24 +2,27 @@ package green_goblin
 
 import com.softwaremill.sttp._
 import io.circe.generic.semiauto.deriveDecoder
+import io.circe.syntax._
 import io.circe.{Decoder, parser}
 
 case class DummyResult(data: String)
+
 case class AuthResult(token: String)
+
 case class SendMessageResult(trackId: String)
+
 case class MessageStatusResult(status: String, error: String)
+
 case class DBScriptResult(status: Boolean)
 
 object HttpOps {
-
   implicit val backend: SttpBackend[Id, Nothing] = HttpURLConnectionBackend()
   val url = "http://localhost:4000/porticconnector-cxf/services/rest"
 
   def ping(): String = {
-
-    val request = sttp.post(uri"$url/dummy1")
-    val response = request.send()
+    val request = sttp.contentType("application/json").post(uri"$url/dummy1")
     implicit val resultDecoder: Decoder[DummyResult] = deriveDecoder[DummyResult]
+    val response = request.send()
     response.code match {
       case 200 =>
         response.body match {
@@ -36,12 +39,13 @@ object HttpOps {
   }
 
 
-  def authenticate(username: String, password: String, companyId: String): String = {
-
-    val request = sttp.body(Map("username" -> username, "password" -> password, "companyId" -> companyId))
+  def authenticate(username: String, password: String, companyCode: String): String = {
+    val payload: String = Map("username" -> username, "password" -> password, "companyCode" -> companyCode).asJson.toString()
+    val request = sttp.contentType("application/json")
+      .body(payload)
       .post(uri"$url/authenticate")
-    val response = request.send()
     implicit val resultDecoder: Decoder[AuthResult] = deriveDecoder[AuthResult]
+    val response = request.send()
     response.code match {
       case 200 =>
         response.body match {
@@ -58,16 +62,18 @@ object HttpOps {
   }
 
 
-//  def sendMessage(securityToken: String, companyCode: String, documentType: String, sender: String, receiver: String,
-//                  msgNumber: String, numVersion: String, messageFormat: String, message: String, digest: String,
-//                  signed: String): String = {
+  //  def sendMessage(securityToken: String, companyCode: String, documentType: String, sender: String, receiver: String,
+  //                  msgNumber: String, numVersion: String, messageFormat: String, message: String, digest: String,
+  //                  signed: String): String = {
   def sendMessage(securityToken: String, companyCode: String, m: Message): String = {
-    val request = sttp.body(Map("securityToken" -> securityToken, "companyCode" -> companyCode, "documentType" -> m.documentType,
+    val payload = Map("securityToken" -> securityToken, "companyCode" -> companyCode, "documentType" -> m.documentType,
       "sender" -> m.sender, "receiver" -> m.receiver, "msgNumber" -> m.docNumber,
       "numVersion" -> m.docVersion, "messageFormat" -> m.messageFormat, "message" -> m.message,
-      "signed" -> m.signed)).post(uri"$url/sendmessage")
-    val response = request.send()
+      "signed" -> m.signed).asJson.toString()
+    val request = sttp.contentType("application/json")
+      .body(payload).post(uri"$url/sendmessage")
     implicit val resultDecoder: Decoder[SendMessageResult] = deriveDecoder[SendMessageResult]
+    val response = request.send()
     response.code match {
       case 200 =>
         response.body match {
@@ -84,11 +90,12 @@ object HttpOps {
   }
 
   def messageStatus(securityToken: String, companyCode: String, trackId: String, msgId: String): Map[String, String] = {
-
-    val request = sttp.body(Map("securityToken" -> securityToken, "companyCode" -> companyCode, "trackId" -> trackId, "msgId" -> msgId))
+    val payload = Map("securityToken" -> securityToken, "companyCode" -> companyCode, "trackId" -> trackId, "msgId" -> msgId).asJson.toString()
+    val request = sttp.contentType("application/json")
+      .body(payload)
       .post(uri"$url/messagestatus")
-    val response = request.send()
     implicit val resultDecoder: Decoder[MessageStatusResult] = deriveDecoder[MessageStatusResult]
+    val response = request.send()
     response.code match {
       case 200 =>
         response.body match {
@@ -106,11 +113,12 @@ object HttpOps {
   }
 
   def dbScript(securityToken: String, companyCode: String, name: String): Boolean = {
-
-    val request = sttp.body(Map("securityToken" -> securityToken, "name" -> name, "companyCode" -> companyCode))
+    val payload = Map("securityToken" -> securityToken, "name" -> name, "companyCode" -> companyCode).asJson.toString()
+    val request = sttp.contentType("application/json")
+      .body(payload)
       .post(uri"$url/dbscript")
-    val response = request.send()
     implicit val resultDecoder: Decoder[DBScriptResult] = deriveDecoder[DBScriptResult]
+    val response = request.send()
     response.code match {
       case 200 =>
         response.body match {

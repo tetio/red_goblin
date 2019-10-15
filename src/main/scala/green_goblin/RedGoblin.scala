@@ -6,12 +6,12 @@ object RedGoblin {
   var securityToken: String = ""
   var companyCode: String = ""
 
-  def throwPumpkin(aSecurityToken: String, aCompanyCode: String, messages: List[Message]): List[ProcessingMessage] = {
-    securityToken = securityToken
+  def throwPumpkin(aSecurityToken: String, aCompanyCode: String, messages: List[Message]): (List[ProcessingMessage], List[ProcessingMessage]) = {
+    securityToken = aSecurityToken
     companyCode = aCompanyCode
     val sentMessages = send(messages)
     val processedMessages = process(sentMessages)
-    processedMessages._2
+    processedMessages
   }
 
   private def send(messages: List[Message]): List[ProcessingMessage] = {
@@ -22,9 +22,8 @@ object RedGoblin {
     processingMessages
   }
 
-  def isProcessed(status: String, error: String): Boolean = {
+  def isProcessed(status: String, error: String): Boolean =
     status == "OKLB" || status == "OKS" || status == "OKIP" || status == "OKPC" || status == "" || status == "null"
-  }
 
   def process(messages: List[ProcessingMessage]): (List[ProcessingMessage], List[ProcessingMessage]) = {
 
@@ -40,16 +39,11 @@ object RedGoblin {
           tmpPending = pm :: tmpPending
         }
       })
-      if (times > 10) {
+      if (times > 10 || tmpPending.isEmpty) {
         (tmpPending, tmpProcessed)
       } else {
-        tmpPending match {
-          case isEmpty => (tmpPending, tmpProcessed)
-          case _ => {
-            Thread.sleep (times * 1000L)
-            doProcessingAcc (tmpPending, tmpProcessed, times + 1)
-          }
-        }
+        Thread.sleep(times * 1000L)
+        doProcessingAcc(tmpPending, tmpProcessed, times + 1)
       }
     }
 

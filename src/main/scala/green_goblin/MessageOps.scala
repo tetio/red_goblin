@@ -14,12 +14,12 @@ case class ProcessingMessage(message: Message, trackId: String, status: String, 
 
 object MessageOps {
 
-  def messagesInFolder(path: String): Iterable[File] = {
+  def messagesInFolder(path: String): List[File] = {
     getClass.getResource(path) match {
       case null => List()
       case _ =>
         new File(getClass.getResource(path).getPath).listFiles(_.getName.endsWith(".msg"))
-          .map(_.getAbsoluteFile)
+          .map(_.getAbsoluteFile).toList
     }
   }
 

@@ -17,7 +17,8 @@ case class DBScriptResult(status: Boolean)
 
 object HttpOps {
   implicit val backend: SttpBackend[Id, Nothing] = HttpURLConnectionBackend()
-  val url = "http://localhost:4000/porticconnector-cxf/services/rest"
+  //val url = "http://localhost:4000/porticconnector-cxf/services/rest"
+  val url = "http://10.120.1.182:12100/porticconnector-cxf/services/rest"
 
   def ping(): String = {
     val request = sttp.contentType("application/json").post(uri"$url/dummy1")

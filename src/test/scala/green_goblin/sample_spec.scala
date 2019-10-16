@@ -6,9 +6,9 @@ import org.scalatest.{BeforeAndAfterAll, FunSpec}
 class sample_spec extends SpecHelper  with BeforeAndAfterAll {
 
   var secutityToken = ""
-  val username = "aaaa" // found in resources file
-  val companyCode = "aaaa" // found in resources file
-  val password = "aaaa" // found in resourcesv file
+  val username = "NESTA" // found in resources file
+  val companyCode = "ESA61961488" // found in resources file
+  val password = "CALL" // found in resourcesv file
 
   override def beforeAll(): Unit = {
     secutityToken = HttpOps.authenticate(username, password, companyCode)

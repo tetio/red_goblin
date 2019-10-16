@@ -1,5 +1,6 @@
 package green_goblin
 
+import io.circe.syntax._
 import org.scalatest.FunSpec
 
 class SpecHelper extends FunSpec {
@@ -20,6 +21,31 @@ class SpecHelper extends FunSpec {
     } else {
       assert(messagesKo.isEmpty, "Too many messages with issues.")
     }
-    // TODO prepare report
+    if (messagesOk.nonEmpty) {
+      println("*** Messages ok ***")
+      messagesOk.foreach(m => printOkMessage(m))
+    }
+    if (messagesKo.nonEmpty) {
+      println("*********** Messages ko **********")
+      messagesKo.foreach(m => printKoMessage(m))
+    }
+  }
+  def printOkMessage(m: ProcessingMessage): Unit = {
+    val s =
+      s"""
+         |trackId: ${m.trackId}
+         |docType: ${m.message.documentType}
+         |""".stripMargin
+    print(s)
+  }
+  def printKoMessage(m: ProcessingMessage): Unit = {
+    val s =
+      s"""
+        |trackId: ${m.trackId}
+        |docType: ${m.message.documentType}
+        |status: ${m.status}
+        |error: ${m.error}
+        |""".stripMargin
+    print(s)
   }
 }

@@ -5,46 +5,54 @@ import org.scalatest.FunSpec
 
 class SpecHelper extends FunSpec {
 
-  var messagesOk: List[ProcessingMessage] = List()
-  var messagesKo: List[ProcessingMessage] = List()
+  var allMessagesOk: List[ProcessingMessage] = List()
+  var allMessagesKo: List[ProcessingMessage] = List()
 
   def expectTest(messages: (List[ProcessingMessage], List[ProcessingMessage]), numExpectedOK: Int, expectedWithIssues: Int = 0): Unit = {
-    val maxMessagesWithIssues = messages._2.size - expectedWithIssues
-    assert(maxMessagesWithIssues == numExpectedOK, "Some messages have processing issues")
-    messagesOk = messages._2.filter(RedGoblin.isOk) ++ messagesOk
-    messagesKo = messages._1 ++ messagesKo
-    messagesKo =  messages._2.filter(RedGoblin.hasErrors) ++ messagesKo
+    val messagesOk = messages._2.filter(RedGoblin.isOk)
+    val messagesKo =  messages._2.filter(RedGoblin.hasErrors)
+    val numMessagesWithIssues =  messagesKo.size - expectedWithIssues
+
+    assert(messagesOk.size == numExpectedOK, "Not all expected messages are Ok")
+    assert(numMessagesWithIssues == 0, "Too many messages have issues")
+    assert(messages._1.size  == 0, "Some messages are still processing")
+
+    allMessagesOk = messagesOk ++ allMessagesOk
+    allMessagesKo = messages._1 ++ allMessagesKo
+    allMessagesKo =  messagesKo ++ allMessagesKo
+
     addInfo()
   }
 
   def finalCheck(expectedWithIssues: Int = 0): Unit = {
     if (expectedWithIssues > 0) {
-      assert(expectedWithIssues < messagesKo.size, "Too many messages with issues.")
+      assert(expectedWithIssues < allMessagesKo.size, "Too many messages with issues.")
     } else {
-      assert(messagesKo.nonEmpty, "Too many messages with issues.")
+      assert(allMessagesKo.nonEmpty, "Too many messages with issues.")
     }
-    if (messagesOk.nonEmpty) {
-      println("*** Messages ok ***")
-      messagesOk.foreach(m => printOkMessage(m))
+    if (allMessagesOk.nonEmpty) {
+      alert("*** Messages ok ***")
+      allMessagesOk.foreach(m => printMessage(m))
     }
-    if (messagesKo.nonEmpty) {
-      println("*********** Messages ko **********")
-      messagesKo.foreach(m => printKoMessage(m))
+    if (allMessagesKo.nonEmpty) {
+      alert("*********** Messages ko **********")
+      allMessagesKo.foreach(m => printMessage(m))
     }
   }
 
   def addInfo(): Unit = {
-    if (messagesOk.nonEmpty) {
+    if (allMessagesOk.nonEmpty) {
+
       info("*** Messages ok ***")
-      messagesOk.foreach(m => printOkMessage(m))
+      allMessagesOk.foreach(m => printMessage(m))
     }
-    if (messagesKo.nonEmpty) {
+    if (allMessagesKo.nonEmpty) {
       info("*********** Messages ko **********")
-      messagesKo.foreach(m => printKoMessage(m))
+      allMessagesKo.foreach(m => printMessage(m))
     }
 
   }
-  def printOkMessage(m: ProcessingMessage): Unit = {
+  def printMessage(m: ProcessingMessage): Unit = {
     val isOk = !RedGoblin.hasErrors(m) && !RedGoblin.isProcessing(m)
     val s =
       s"""
@@ -57,14 +65,4 @@ class SpecHelper extends FunSpec {
     info(s)
   }
 
-  def printKoMessage(m: ProcessingMessage): Unit = {
-    val s =
-      s"""
-        |trackId: ${m.trackId}
-        |docType: ${m.message.documentType}
-        |status: ${m.status}
-        |error: ${m.error}
-        |""".stripMargin
-    info(s)
-  }
 }

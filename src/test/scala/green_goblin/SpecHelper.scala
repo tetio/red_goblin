@@ -1,9 +1,8 @@
 package green_goblin
 
-import io.circe.syntax._
-import org.scalatest.FunSpec
+import org.scalatest.{FeatureSpec, GivenWhenThen}
 
-class SpecHelper extends FunSpec {
+class SpecHelper extends FeatureSpec with GivenWhenThen {  //FunSpec {
 
   var allMessagesOk: List[ProcessingMessage] = List()
   var allMessagesKo: List[ProcessingMessage] = List()
@@ -13,56 +12,35 @@ class SpecHelper extends FunSpec {
     val messagesKo =  messages._2.filter(RedGoblin.hasErrors)
     val numMessagesWithIssues =  messagesKo.size - expectedWithIssues
 
-    assert(messagesOk.size == numExpectedOK, "Not all expected messages are Ok")
-    assert(numMessagesWithIssues == 0, "Too many messages have issues")
-    assert(messages._1.size  == 0, "Some messages are still processing")
-
     allMessagesOk = messagesOk ++ allMessagesOk
     allMessagesKo = messages._1 ++ allMessagesKo
     allMessagesKo =  messagesKo ++ allMessagesKo
 
-    addInfo()
+    info(addInfos())
+
+    assert(messagesOk.size == numExpectedOK, "Not all expected messages are Ok")
+    assert(numMessagesWithIssues == 0, "Too many messages have issues")
+    assert(messages._1.isEmpty, "Some messages are still processing")
   }
 
-  def finalCheck(expectedWithIssues: Int = 0): Unit = {
-    if (expectedWithIssues > 0) {
-      assert(expectedWithIssues < allMessagesKo.size, "Too many messages with issues.")
-    } else {
-      assert(allMessagesKo.nonEmpty, "Too many messages with issues.")
-    }
+
+  def addInfos(): String = {
+    var s = ""
     if (allMessagesOk.nonEmpty) {
-      alert("*** Messages ok ***")
-      allMessagesOk.foreach(m => printMessage(m))
+      s = s + "Messages OK: "
+      s = s + allMessagesOk.map(m => printMessage(m)).foldRight("")(_ +", "+ _)
     }
     if (allMessagesKo.nonEmpty) {
-      alert("*********** Messages ko **********")
-      allMessagesKo.foreach(m => printMessage(m))
+      s = s + "Messages KO: "
+      s = s + allMessagesKo.map(m => printMessage(m)).foldRight("")(_ +", "+ _)
     }
+    s
   }
 
-  def addInfo(): Unit = {
-    if (allMessagesOk.nonEmpty) {
-
-      info("*** Messages ok ***")
-      allMessagesOk.foreach(m => printMessage(m))
-    }
-    if (allMessagesKo.nonEmpty) {
-      info("*********** Messages ko **********")
-      allMessagesKo.foreach(m => printMessage(m))
-    }
-
-  }
-  def printMessage(m: ProcessingMessage): Unit = {
-    val isOk = !RedGoblin.hasErrors(m) && !RedGoblin.isProcessing(m)
-    val s =
-      s"""
-         |processedOk: $isOk
-         |trackId: ${m.trackId}
-         |docType: ${m.message.documentType}
-         |status: ${m.status}
-         |error: ${m.error}
-         |""".stripMargin
-    info(s)
+  def printMessage(m: ProcessingMessage): String = {
+    //val isOk = !RedGoblin.hasErrors(m) && !RedGoblin.isProcessing(m)
+    val s = s"(${m.trackId}, ${m.message.documentType}, ${m.status}, ${m.error})"
+    s
   }
 
 }

@@ -1,9 +1,9 @@
 package green_goblin
 
-import org.scalatest.{BeforeAndAfterAll, GivenWhenThen}
+import org.scalatest.BeforeAndAfterAll
 
 
-class sample_spec extends SpecHelper with BeforeAndAfterAll  {
+class sample_spec extends SpecHelper with BeforeAndAfterAll {
 
   var securityToken = ""
   val username = "NESTA" // found in resources file
@@ -15,21 +15,21 @@ class sample_spec extends SpecHelper with BeforeAndAfterAll  {
     HttpOps.dbScript(securityToken, companyCode, "data.sql")
   }
 
-  scenario("Green Goblin tries to sabotage the 'sample' test") {
+  describe("Green Goblin tries to sabotage the 'sample' test") {
 
-    Given("Throw pumpkin at sample")
-    val messages = RedGoblin.throwPumpkin(securityToken, companyCode, MessageOps.loadMessages("/messages/sample"))
-    //When(addInfos())
-    expectTest(messages, 2)
+    it("Throw pumpkin at sample") {
+      val messages = RedGoblin.throwPumpkin(securityToken, companyCode, MessageOps.loadMessages("/messages/sample"))
+      //When(addInfos())
+      expectTest(messages, 2)
+    }
   }
 
-  scenario("Green Goblin tries to sabotage the same 'sample' test") {
+  describe("Green Goblin tries to sabotage the same 'sample' test") {
 
-    Given("Throw pumpkin at the same sample")
-    val messages = RedGoblin.throwPumpkin(securityToken, companyCode, MessageOps.loadMessages("/messages/sample"))
-    //When(addInfos())
-    expectTest(messages, 2)
+    it("Throw pumpkin at the same sample") {
+      val messages = RedGoblin.throwPumpkin(securityToken, companyCode, MessageOps.loadMessages("/messages/sample"))
+      //When(addInfos())
+      expectTest(messages, 2)
+    }
   }
-
-
 }

@@ -1,30 +1,24 @@
 package green_goblin
 
-import org.scalatest.{FeatureSpec, GivenWhenThen}
+import org.scalatest.FunSpec
 
-class SpecHelper extends FeatureSpec with GivenWhenThen {  //FunSpec {
-
-  var allMessagesOk: List[ProcessingMessage] = List()
-  var allMessagesKo: List[ProcessingMessage] = List()
+class SpecHelper extends FunSpec {
 
   def expectTest(messages: (List[ProcessingMessage], List[ProcessingMessage]), numExpectedOK: Int, expectedWithIssues: Int = 0): Unit = {
     val messagesOk = messages._2.filter(RedGoblin.isOk)
     val messagesKo =  messages._2.filter(RedGoblin.hasErrors)
     val numMessagesWithIssues =  messagesKo.size - expectedWithIssues
 
-    allMessagesOk = messagesOk ++ allMessagesOk
-    allMessagesKo = messages._1 ++ allMessagesKo
-    allMessagesKo =  messagesKo ++ allMessagesKo
-
-    info(addInfos())
+    info(messageReport(messagesOk, messages._1 ++  messagesKo))
 
     assert(messagesOk.size == numExpectedOK, "Not all expected messages are Ok")
     assert(numMessagesWithIssues == 0, "Too many messages have issues")
     assert(messages._1.isEmpty, "Some messages are still processing")
+
   }
 
 
-  def addInfos(): String = {
+  def messageReport(allMessagesOk: List[ProcessingMessage], allMessagesKo: List[ProcessingMessage]): String = {
     var s = ""
     if (allMessagesOk.nonEmpty) {
       s = s + "Messages OK: "

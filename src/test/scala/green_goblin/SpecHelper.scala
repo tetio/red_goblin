@@ -22,19 +22,16 @@ class SpecHelper extends FunSpec {
     var s = ""
     if (allMessagesOk.nonEmpty) {
       s = s + "Messages OK: "
-      s = s + allMessagesOk.map(m => printMessage(m)).foldRight("")(_ +", "+ _)
+      s = s + allMessagesOk.map(message2string).foldRight("")(_ +", "+ _)
     }
     if (allMessagesKo.nonEmpty) {
       s = s + "Messages KO: "
-      s = s + allMessagesKo.map(m => printMessage(m)).foldRight("")(_ +", "+ _)
+      s = s + allMessagesKo.map(message2string).foldRight("")(_ +", "+ _)
     }
     s
   }
 
-  def printMessage(m: ProcessingMessage): String = {
-    //val isOk = !RedGoblin.hasErrors(m) && !RedGoblin.isProcessing(m)
-    val s = s"(${m.trackId}, ${m.message.documentType}, ${m.status}, ${m.error})"
-    s
-  }
+  def message2string(m: ProcessingMessage): String =
+    s"(${m.trackId}, ${m.message.documentType}, ${m.status}, ${m.error})"
 
 }

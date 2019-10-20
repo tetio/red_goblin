@@ -18,15 +18,15 @@ class SpecHelper extends FunSpec {
   }
 
 
-  def messageReport(allMessagesOk: List[ProcessingMessage], allMessagesKo: List[ProcessingMessage]): String = {
+  def messageReport(messagesOk: List[ProcessingMessage], messagesKo: List[ProcessingMessage]): String = {
     var s = ""
-    if (allMessagesOk.nonEmpty) {
+    if (messagesOk.nonEmpty) {
       s = s + "Messages OK: "
-      s = s + allMessagesOk.map(message2string).foldRight("")(_ +", "+ _)
+      s = s + messagesOk.map(message2string).foldRight("")(_ +", "+ _)
     }
-    if (allMessagesKo.nonEmpty) {
+    if (messagesKo.nonEmpty) {
       s = s + "Messages KO: "
-      s = s + allMessagesKo.map(message2string).foldRight("")(_ +", "+ _)
+      s = s + messagesKo.map(message2string).foldRight("")(_ +", "+ _)
     }
     s
   }

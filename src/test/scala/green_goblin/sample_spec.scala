@@ -19,7 +19,6 @@ class sample_spec extends SpecHelper with BeforeAndAfterAll {
 
     it("Throw pumpkin at sample") {
       val messages = RedGoblin.throwPumpkin(securityToken, companyCode, MessageOps.loadMessages("/messages/sample"))
-      //When(addInfos())
       expectTest(messages, 2)
     }
   }
@@ -28,7 +27,6 @@ class sample_spec extends SpecHelper with BeforeAndAfterAll {
 
     it("Throw pumpkin at the same sample") {
       val messages = RedGoblin.throwPumpkin(securityToken, companyCode, MessageOps.loadMessages("/messages/sample"))
-      //When(addInfos())
       expectTest(messages, 2)
     }
   }

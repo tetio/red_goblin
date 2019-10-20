@@ -2,7 +2,7 @@ name := "red_goblin"
 
 version := "0.1"
 
-scalaVersion := "2.12.7"
+scalaVersion := "2.12.10"
 
 val circeVersion = "0.11.1"
 

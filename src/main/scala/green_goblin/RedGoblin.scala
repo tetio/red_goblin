@@ -47,7 +47,7 @@ object RedGoblin {
           tmpPending = pm :: tmpPending
         }
       })
-      if (times > 3 || tmpPending.isEmpty) {
+      if (times > 30 || tmpPending.isEmpty) {
         (tmpPending, tmpProcessed)
       } else {
         Thread.sleep(times * 1000L)

@@ -5,6 +5,8 @@ import io.circe.generic.semiauto.deriveDecoder
 import io.circe.syntax._
 import io.circe.{Decoder, parser}
 
+import scala.sys.SystemProperties
+
 case class DummyResult(data: String)
 
 case class AuthResult(token: String)
@@ -17,8 +19,8 @@ case class DBScriptResult(status: Boolean)
 
 object HttpOps {
   implicit val backend: SttpBackend[Id, Nothing] = HttpURLConnectionBackend()
-  //val url = "http://localhost:4000/porticconnector-cxf/services/rest"
-  val url = "http://10.120.1.182:12100/porticconnector-cxf/services/rest"
+
+  val url = s"http://${Config.ip}:${Config.port}/porticconnector-cxf/services/rest"
 
   def ping(): String = {
     val request = sttp.contentType("application/json").post(uri"$url/dummy1")

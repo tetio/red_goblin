@@ -9,7 +9,7 @@ class vermas_spec extends SpecHelper with BeforeAndAfterAll {
     HttpOps.dbScript(securityToken, companyCode, "VGM")
   }
 
-  describe("Green Goblin tries to sabotage the 'sample' test") {
+  describe("Green Goblin tries to sabotage the 'vermas' test") {
     it("doTestWait VERMAS/SOLICITUD-MODIFICACION should send 1 prepared messages and wait for them") {
       val messages = RedGoblin.throwPumpkin(securityToken, companyCode, MessageOps.loadMessages("messages/VERMAS/SOLICITUD-MODIFICACION"))
       expectTest(messages, 1)

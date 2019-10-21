@@ -3,6 +3,10 @@ package green_goblin
 import org.scalatest.FunSpec
 
 class SpecHelper extends FunSpec {
+  var securityToken = ""
+  val username = "NESTA" // found in resources file
+  val companyCode = "ESA61961488" // found in resources file
+  val password = "CALL" // found in resourcesv file
 
   def expectTest(messages: (List[ProcessingMessage], List[ProcessingMessage]), numExpectedOK: Int, expectedWithIssues: Int = 0): Unit = {
     val messagesOk = messages._2.filter(RedGoblin.isOk)

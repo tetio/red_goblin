@@ -35,7 +35,7 @@ object RedGoblin {
 
   def process(messages: List[ProcessingMessage]): (List[ProcessingMessage], List[ProcessingMessage]) = {
 
-    @tailrec def doProcessingAcc(messages: List[ProcessingMessage], result: List[ProcessingMessage], times: Int): (List[ProcessingMessage], List[ProcessingMessage]) = {
+    @tailrec def processingAcc(messages: List[ProcessingMessage], result: List[ProcessingMessage], times: Int): (List[ProcessingMessage], List[ProcessingMessage]) = {
       var tmpPending: List[ProcessingMessage] = List()
       var tmpProcessed: List[ProcessingMessage] = result
       messages.foreach(m => {
@@ -47,15 +47,15 @@ object RedGoblin {
           tmpPending = pm :: tmpPending
         }
       })
-      if (times > 30 || tmpPending.isEmpty) {
+      if (times > 10 || tmpPending.isEmpty) {
         (tmpPending, tmpProcessed)
       } else {
         Thread.sleep(times * 1000L)
-        doProcessingAcc(tmpPending, tmpProcessed, times + 1)
+        processingAcc(tmpPending, tmpProcessed, times + 1)
       }
     }
 
-    doProcessingAcc(messages, List(), 0)
+    processingAcc(messages, List(), 0)
   }
 
 }

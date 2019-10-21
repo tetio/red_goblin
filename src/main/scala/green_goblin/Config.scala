@@ -12,6 +12,6 @@ object Config {
     }
   }
 
-  def ip = config()("ip")
-  def port = config()("port")
+  def ip: String = config()("ip")
+  def port: String = config()("port")
 }

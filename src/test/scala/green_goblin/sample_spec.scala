@@ -5,11 +5,6 @@ import org.scalatest.BeforeAndAfterAll
 
 class sample_spec extends SpecHelper with BeforeAndAfterAll {
 
-  var securityToken = ""
-  val username = "NESTA" // found in resources file
-  val companyCode = "ESA61961488" // found in resources file
-  val password = "CALL" // found in resourcesv file
-
   override def beforeAll(): Unit = {
     securityToken = HttpOps.authenticate(username, password, companyCode)
     HttpOps.dbScript(securityToken, companyCode, "data.sql")

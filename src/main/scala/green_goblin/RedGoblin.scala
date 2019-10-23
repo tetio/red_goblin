@@ -3,6 +3,8 @@ package green_goblin
 import scala.annotation.tailrec
 
 object RedGoblin {
+  //val INITIAL_LAPSE = 10
+  val MAX_TRIES = 30
   var securityToken: String = ""
   var companyCode: String = ""
 
@@ -11,7 +13,7 @@ object RedGoblin {
     companyCode = aCompanyCode
     val sentMessages = send(messages)
 
-    Thread.sleep(3 * 1000L)
+    //Thread.sleep(INITIAL_LAPSE * 1000L)
 
     val processedMessages = process(sentMessages)
     processedMessages
@@ -47,7 +49,7 @@ object RedGoblin {
           tmpPending = pm :: tmpPending
         }
       })
-      if (times > 10 || tmpPending.isEmpty) {
+      if (times > MAX_TRIES || tmpPending.isEmpty) {
         (tmpPending, tmpProcessed)
       } else {
         Thread.sleep(times * 1000L)

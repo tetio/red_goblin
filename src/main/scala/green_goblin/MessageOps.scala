@@ -8,7 +8,7 @@ import scala.io.Source
  * Created by tetio on 23/03/2017.
  */
 case class Message(documentType: String, sender: String, receiver: String, docNumber: String, docVersion: String,
-                   messageFormat: String, signed: String, message: String)
+                   messageFormat: String, signed: String, message: String, fileName: String)
 
 case class ProcessingMessage(message: Message, trackId: String, status: String, error: String)
 
@@ -29,7 +29,7 @@ object MessageOps {
       val bufferedSource = Source.fromFile(f)
       val contents = bufferedSource.getLines().mkString
       bufferedSource.close()
-      Message(data(0), data(1), data(2), data(3), data(4), data(5), data(6), contents)
+      Message(data(0), data(1), data(2), data(3), data(4), data(5), data(6), contents, f.getName)
     }).toList
   }
 }

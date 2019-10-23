@@ -15,12 +15,12 @@ case class SendMessageResult(trackId: String)
 
 case class MessageStatusResult(status: String, error: String)
 
-case class DBScriptResult(status: Boolean)
+case class DBScriptResult(status: String)
 
 object HttpOps {
   implicit val backend: SttpBackend[Id, Nothing] = HttpURLConnectionBackend()
 
-  val url = s"http://${Config.ip}:${Config.port}/porticconnector-cxf/services/rest"
+  val url = s"http://${Config("ip")}:${Config("port")}/porticconnector-cxf/services/rest"
 
   def ping(): String = {
     val request = sttp.contentType("application/json").post(uri"$url/dummy1")
@@ -115,7 +115,7 @@ object HttpOps {
     }
   }
 
-  def dbScript(securityToken: String, companyCode: String, name: String): Boolean = {
+  def dbScript(securityToken: String, companyCode: String, name: String): String = {
     val payload = Map("securityToken" -> securityToken, "name" -> name, "companyCode" -> companyCode).asJson.toString()
     val request = sttp.contentType("application/json")
       .body(payload)
@@ -129,11 +129,11 @@ object HttpOps {
             val decodeResult = parser.decode[DBScriptResult](x)
             decodeResult match {
               case Right(result) => result.status
-              case Left(_) => false
+              case Left(_) => "KO"
             }
-          case Left(_) => false
+          case Left(_) => "KO-Rest Call"
         }
-      case _ => false
+      case _ => "KO-HTTP"
     }
   }
 }

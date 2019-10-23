@@ -13,29 +13,29 @@ class SpecHelper extends FunSpec {
     val messagesKo =  messages._2.filter(RedGoblin.hasErrors)
     val numMessagesWithIssues =  messagesKo.size - expectedWithIssues
 
-    info(messageReport(messagesOk, messages._1 ++  messagesKo))
+    info("info: "+messageReport(messagesOk, messages._1 ++  messagesKo))
+    note("note: "+messageReport(messagesOk, messages._1 ++  messagesKo))
+    alert("alert: "+messageReport(messagesOk, messages._1 ++  messagesKo))
 
-    assert(messagesOk.size == numExpectedOK, "Not all expected messages are Ok")
-    assert(numMessagesWithIssues == 0, "Too many messages have issues")
+    if (expectedWithIssues == 0) {
+      assert(messagesOk.size == numExpectedOK, "Not all expected messages are Ok")
+    } else {
+      assert(numMessagesWithIssues == 0, "Too many messages have issues")
+    }
     assert(messages._1.isEmpty, "Some messages are still processing")
 
   }
 
 
   def messageReport(messagesOk: List[ProcessingMessage], messagesKo: List[ProcessingMessage]): String = {
-    var s = ""
-    if (messagesOk.nonEmpty) {
-      s = s + "Messages OK: "
-      s = s + messagesOk.map(message2string).foldRight("")(_ +", "+ _)
-    }
-    if (messagesKo.nonEmpty) {
-      s = s + "Messages KO: "
-      s = s + messagesKo.map(message2string).foldRight("")(_ +", "+ _)
-    }
-    s
+    val ok = messagesOk.map(message2string).foldRight("")(_ +", "+ _).orElse("-")
+    val ko = messagesKo.map(message2string).foldRight("")(_ +", "+ _).orElse("-")
+    //s"Messages OK/KO: $ok / $ko"
+    s"Messages OK/KO: ${messagesOk.map(message2string).foldRight("")(_ +", "+ _)} / ${messagesKo.map(message2string).foldRight("")(_ +", "+ _)}"
   }
 
   def message2string(m: ProcessingMessage): String =
-    s"(${m.trackId}, ${m.message.documentType}, ${m.status}, ${m.error})"
+    //s"(${m.trackId}, ${m.message.documentType}, ${m.status}, ${m.error}, ${m.message.path})"
+    s"(${m.trackId}, ${m.status}, ${m.error}, ${m.message.fileName})"
 
 }
